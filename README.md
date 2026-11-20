@@ -4,6 +4,10 @@ A catalogue of **evidence producers by country**: researchers based in a country
 
 Countries: **Chile** (first catalogue, November 2026) and **Colombia** (in preparation). Switch with the menu at the top right.
 
+## Protocol
+
+The protocol, with the search strategy and the database list, in English and Spanish: https://claude.ai/artifact/5QX6Ti97NxM1m6jRg9LgVg (Protocol v1.0, 20 Nov 2026). Questions still open in it: the start year of the searches, the size of the human screening check, and whether the anaemia evidence map used other databases.
+
 ## Publish on GitHub Pages
 
 In **Settings → Pages**, set **Source** to *Deploy from a branch*, branch `main`, folder `/ (root)`. The site appears at `https://camansil.github.io/country-researchers/`.
@@ -22,12 +26,12 @@ countries/<iso>/outline.json     the country's outline for the map
 scripts/parse_ris.py <iso>       parse and deduplicate the exports
 scripts/enrich_openalex.py <iso> link records to OpenAlex (runs in GitHub Actions: Actions → OpenAlex enrichment)
 scripts/build_catalogue.py <iso> write catalogue.json and people.csv
-docs/                            protocol (English and Spanish) and screening criteria
+docs/                            screening criteria (the protocol is linked below)
 ```
 
 ## Pipeline for a country
 
-1. Run the searches in the protocol (`docs/`) and save the exports in `countries/<iso>/raw/`.
+1. Run the searches in the protocol (link above) and save the exports in `countries/<iso>/raw/`.
 2. `python3 scripts/parse_ris.py <iso>`.
 3. Screen titles and abstracts against the two criteria (`docs/SCREENING_v03.md`).
 4. Run the **OpenAlex enrichment** action with the country code. It needs the repository secret `OPENALEX_API_KEY` (Settings → Secrets and variables → Actions).
